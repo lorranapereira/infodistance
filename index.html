@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">    
+     
+    <!-- Bootstrap core CSS -->
+    <link rel="shortcut icon" href="images/icons/icon-72x72.png" type="image/x-icon" />
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/estilo.css">
+    <link rel="manifest" href="/manifest.json">
+    
+    <!--<script src="sw.js"></script>        
+    
+
+    <!-- Custom styles for this template -->
+
+  </head>
+
+  <body>
+      <img src="css/corrida.jpg" alt="">
+      <strong><h1>Viva saúdavel <br/> InfoDistância </h1><strong>
+      <div id="site">        
+            <span id="counter" style="position:relative; font-size:38px; color:white; top:1em; left:10%; display:none">00:00:00</span>
+            <br/>                 
+            <input type="button" class="button" id="iniciar" onclick="inicia();" value="Nova Rota" />
+            <br/>     
+            <br/>                   
+            <br/>                   
+            <br/> 
+            <a href="planilha.html"><input type="button" id="planilha" class="button" src="planilha.html" value="Planilha"/> 
+            </a>                  
+            <br/>                
+            <input type="button" class="button" style="display: none; position:reponsive; top:2em;" id="btnEnviar" value="Finalizar" />
+            <br/>                   
+            <br/> 
+        </div>
+        <script>
+          if (navigator.serviceWorker.controller) {
+            console.log('[PWA Builder] active service worker found, no need to register')
+            } else {
+            //Register the ServiceWorker
+            navigator.serviceWorker.register('sw.js', {
+                scope: './'
+            }).then(function(reg) {
+                console.log('Service worker has been registered for scope:'+ reg.scope);
+            });
+          }
+        </script>
+        <script src="js/mapa.js"></script> 
+        <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCIiTb4YWy7Ot4PBQKNbw2ANMHe5f8SbRE"></script>
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>

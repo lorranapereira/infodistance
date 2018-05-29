@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content=""> 
+    <link rel="manifest" href="/manifest.json">
+    
+
+    <title>The Big Picture - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/estilo.css">
+    
+
+    <!-- Custom styles for this template -->
+
+  </head>
+
+  <body style="background-color: #131414;">
+        <div class="container">
+            <strong><h1 style="position:relative; font-family: 'Lucida Sans Unicode'; width:80%; font-size:35px; top:1em; left:10%; color:white">Planilha De Corrida </h1><strong>                        
+            <div class="table-responsive" id="table" style="position:relative; top:5em; width:100%">
+                <table class="table table-striped table-dark">
+                    <thead>
+                    <tr>
+                        <th>Partida</th>
+                        <th>Chegada</th>
+                        <th>Distância</th>
+                        <th>Tempo</th>
+                    </tr>
+                    </thead>
+                    <tbody id = "tbody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <a href="index.html"><input type="button" style="position:relative; width:30%; top:4.6em; left:60%" class="button" src="index.html" value="Voltar"/> 
+        </a> 
+        <br/>
+        <input type="button" class="button" onclick="apagar()"style="position:reponsive; width:30%; top:2em;" id="btnEnviar" value="Excluir" />        
+		<script>
+        adicionar();
+        function adicionar() {
+            console.log(localStorage.partida);
+            var vetor = [];	
+            vetor = JSON.parse(localStorage.partida); 
+            for (i = 0; i < vetor.length; i++) {
+                var tr = document.createElement("tr");   
+                tr.id = "tr"+i;   
+                var vetor1 = []; 
+                var vetor2 = [];
+                var vetor3 = [];
+                var vetor4 = [];		
+                
+                var td1 = document.createElement("td");
+                var td2 = document.createElement("td");
+                var td3 = document.createElement("td");    
+                var td4 = document.createElement("td");    
+                
+
+                vetor1 = JSON.parse(localStorage.partida);
+                vetor2 = JSON.parse(localStorage.chegada);
+                vetor3 = JSON.parse(localStorage.metros);
+                vetor4 = JSON.parse(localStorage.tempo);
+                
+                console.log(vetor1);
+                console.log(td1);
+
+                td1.textContent = vetor1[i]; 
+                td2.textContent = vetor2[i];
+                td3.textContent = vetor3[i];
+                td4.textContent = vetor4[i];		
+                
+                
+                document.getElementById("tbody").appendChild(tr);
+                console.log(document.getElementById("tbody"));
+                document.getElementById("tr"+i).appendChild(td1);
+                document.getElementById("tr"+i).appendChild(td2);
+                document.getElementById("tr"+i).appendChild(td3);
+                document.getElementById("tr"+i).appendChild(td4);
+                
+            }	
+        }
+        function apagar() {
+            var horainicio = [];
+            var horafim = [];
+            var metros= [];
+            var partida = [];
+            var chegada = [];
+            var i = 0;
+            var vetor = JSON.parse(localStorage.partida); 
+            console.log("tamanho "+vetor.length-1);
+            for (i = 0; i < vetor.length; i++) {
+                aux = document.getElementById("tr"+i);
+                document.getElementById("tr"+i).parentNode.removeChild(aux);        
+                
+            }
+            localStorage.clear();
+        }
+
+    </script>  
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>

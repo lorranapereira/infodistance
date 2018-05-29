@@ -1,0 +1,83 @@
+* { 
+    margin: 0; 
+    padding: 0; 
+    font-family: Arial, Helvetica, sans-serif; 
+    font-size: 14px 
+}
+body {
+    background-color: #131414;
+}
+img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+}
+#site { 
+    position: relative;
+    left: 20%;
+    width: 80%;
+    height: 100%; 
+}
+fieldset { 
+    border: 0 
+}
+legend { 
+    font-weight: bold; 
+    margin-bottom: 10px 
+}
+label { 
+    display: block; 
+    margin-bottom: 2px 
+}
+form div { 
+    margin-bottom: 10px 
+}
+h1 { 
+    position: relative;
+    top:0em;
+    color:#0679B5;
+    font-family: 'Lucida Sans Unicode';
+    text-align: center;
+    font-size: 58px; 
+}
+input { 
+    width: 500px; 
+    padding: 5px;
+}
+form { 
+input[type=submit] { 
+    padding: 5px 10px; 
+    width: auto;
+}
+    margin-bottom: 20px;
+}
+#mapa { 
+    position: absolute;
+    width: 100%; 
+    height: 100%; 
+    left: -30%;
+}
+.button {
+    position: relative;
+    width: 60%;
+    height: 50%;
+    padding: 15px 25px;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #1E5A6F;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #080138;
+  }
+  
+  .button:hover {background-color: #6240E0}
+  
+  .button:active {
+    background-color: #060137;
+    box-shadow: 0 5px #080138;
+    transform: translateY(4px);
+  }
