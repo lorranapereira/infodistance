@@ -3,7 +3,6 @@ var longitude = "";
 var latitude = "";
 var directionsDisplay;
 var coord="";
-var directionsService = new google.maps.DirectionsService();
 var metros = [];
 var partida = [];
 var chegada = [];
@@ -29,7 +28,7 @@ function verifica() {
 
 
 function initialize() {	
-	directionsDisplay = new google.maps.DirectionsRenderer();
+	var directionsService = new google.maps.DirectionsService();	
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(function (position) {
 			pontoPadrao = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -91,7 +90,9 @@ function inicia(){
 }
 
 
+
 function showPosition(position) {
+	var directionsService = new google.maps.DirectionsService();	
 	document.getElementById("counter").style.display = 'none';
 	document.getElementById("btnEnviar").style.display = 'none';
 	document.getElementById("iniciar").style.display = 'block';
@@ -124,11 +125,10 @@ function showPosition(position) {
 
 	partida.push(request.origin);  
     localStorage.partida = JSON.stringify(partida);
-	localStorage.tempo = JSON.stringify(tempo);
-	
+	localStorage.tempo = JSON.stringify(tempo);		
 	directionsService.route(request, function(result, status) {
-		if (status == google.maps.DirectionsStatus.OK) {
-			directionsDisplay.setDirections(result);
+		console.log("kkk");						
+		console.log("entreou");				
 			metros.push(result.routes[0].legs[0].distance.text);
 			localStorage.metros = JSON.stringify(metros);
 			/*var vetor = [];	
@@ -169,7 +169,6 @@ function showPosition(position) {
 				document.getElementById("tr"+i).appendChild(td4);
 				
 			}*/	
-		}
 	});	
 }
 
