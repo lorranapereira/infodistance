@@ -12,8 +12,7 @@
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/estilo.css">
     <link rel="manifest" href="/manifest.json">
-    
-    <!--<script src="sw.js"></script>        
+    <script src="sw.js"></script>        
     
 
     <!-- Custom styles for this template -->
@@ -39,7 +38,7 @@
             <br/> 
         </div>
         <script>
-          if (navigator.serviceWorker.controller) {
+        if (navigator.serviceWorker.controller) {
             console.log('[PWA Builder] active service worker found, no need to register')
             } else {
             //Register the ServiceWorker
