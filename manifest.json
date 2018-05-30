@@ -1,7 +1,7 @@
 {
-  "name": "GeekSul",
+  "name": "InfoDistância",
   "start_url": "index.html",  
-  "short_name": "GeekSul",
+  "short_name": "InfoDistância",
   "theme_color": "#0B0B59",
   "background_color": "#0B0B59",
   "display": "standalone",
@@ -9,7 +9,7 @@
     {
       "src": "images/icons/icon-72x72.png",
       "sizes": "72x72",
-      "type": "image/png"
+      "type": "images/png"
     },
     {
       "src": "images/icons/icon-96x96.png",
