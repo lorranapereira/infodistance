@@ -34,17 +34,16 @@ function initialize() {
 			pontoPadrao = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 			var geocoder = new google.maps.Geocoder();
 			geocoder.geocode({
-			"location": new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
+				"location": new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
             },
             function(results, status) {
-		if (status == google.maps.GeocoderStatus.OK) {
-		    inicio = results[0].formatted_address;
-		}
+				if (status == google.maps.GeocoderStatus.OK) {
+				    inicio = results[0].formatted_address;
+				}
             });
-	});
-    }
+		});
+	}	
 }
-
 
 
 
@@ -83,18 +82,16 @@ function inicia(){
 	interval = setInterval("conta();",1000);
 	document.getElementById("planilha").style.display = 'none';	
 	document.getElementById("counter").style.display = 'block';
-	document.getElementById("btnEnviar").style.display = 'block';
+	document.getElementById("finaliza").style.display = 'block';
 	document.getElementById("iniciar").style.display = 'none';	
 	
 	
 }
 
 
-
 function showPosition(position) {
-	var directionsService = new google.maps.DirectionsService();	
 	document.getElementById("counter").style.display = 'none';
-	document.getElementById("btnEnviar").style.display = 'none';
+	document.getElementById("finaliza").style.display = 'none';
 	document.getElementById("iniciar").style.display = 'block';
 	tempo.push(document.getElementById("counter").textContent);
 	clearInterval(interval);	
@@ -109,33 +106,67 @@ function showPosition(position) {
 	function(results, status) {
 	  if (status == google.maps.GeocoderStatus.OK) {
 		  final = results[0].formatted_address;
+		  document.getElementById("confirma").style.display = 'block';
+		  document.getElementById("endereco").value = final;
+		  
+	  }
+	});
+}
+
+document.getElementById("finaliza").addEventListener("click",function () {
+	document.getElementById("planilha").style.display = 'block';
+	navigator.geolocation.getCurrentPosition(showPosition);
+	console.log(localStorage.partida); 
+	
+
+});
+
+function localfinal() {
+	var latitude = position.coords.latitude.toString();
+	var longitude = position.coords.longitude.toString();
+	var g = new google.maps.Geocoder();
+	g.geocode({
+	  "location": new google.maps.LatLng(latitude, longitude)
+	},
+	function(results, status) {
+	  if (status == google.maps.GeocoderStatus.OK) {
+		  final = results[0].formatted_address;
 		  chegada.push(final);		  		  
 		  localStorage.chegada = JSON.stringify(chegada);
 		  
 	  }
 	});
-	coord = latitude+","+longitude;
+	document.getElementById("endereco").value = final;
+	document.getElementById("confirma").style.display = 'block';
+}
+
+
+function rota() {
+	var directionsService = new google.maps.DirectionsService();		
+	final = document.getElementById("endereco").value;
+	document.getElementById("confirma").style.display="none";
+	
+	chegada.push(final);		  		  
+	localStorage.chegada = JSON.stringify(chegada);
 	var request = {
 		origin: inicio,
-		destination: coord,
+		destination: final,
 		travelMode: google.maps.TravelMode.DRIVING
 	};
-
 	partida.push(request.origin);  
     localStorage.partida = JSON.stringify(partida);
 	localStorage.tempo = JSON.stringify(tempo);		
-	directionsService.route(request, function(result, status) {				
+	directionsService.route(request, function(result, status) {			
 		metros.push(result.routes[0].legs[0].distance.text);
-		localStorage.metros = JSON.stringify(metros);
+		localStorage.metros = JSON.stringify(metros);	
 		
-	});	
+	});
+	
 }
 
-document.getElementById("btnEnviar").addEventListener("click",function () {
-	document.getElementById("planilha").style.display = 'block';		
-	navigator.geolocation.getCurrentPosition(showPosition);	
 
-});
+
+
 
 
 
