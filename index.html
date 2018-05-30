@@ -49,6 +49,15 @@
             });
           }
         </script>
+        <div class="alert alert-success" id="confirma" style="position:relative; display:none; top:-20em; left:10%; height:80%; width:80%;"role="alert">
+            <h4 class="alert-heading">Caminhada Finalizada!</h4>
+            <p>Por favor, confirme seu endereço atual</p>
+            <hr>
+            <input class="form-control" id="endereco" type="text" value="">
+            <a href="#" class="btn btn-success btn-lg" onclick="rota();">
+                <span class="glyphicon glyphicon-ok"></span> 
+            </a>        
+        </div>
         <script src="js/mapa.js"></script> 
         <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCIiTb4YWy7Ot4PBQKNbw2ANMHe5f8SbRE"></script>
         <script src="vendor/jquery/jquery.min.js"></script>
